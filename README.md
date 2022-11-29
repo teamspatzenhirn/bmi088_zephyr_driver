@@ -78,6 +78,13 @@ void sensor_readout() {
 }
 ```
 
+## Git history
+
+This driver has been extracted from our Zephyr fork.
+For the full git history of the driver, refer to this commit in out fork,
+which is the last version before moving the driver here:
+https://github.com/teamspatzenhirn/zephyr/tree/858548919eb664fc364dad0226e3dcf71586292b/drivers/sensor/bmi088
+
 ## Writing Out-Of-Tree Drivers
 
 Since this was kind of a pain to figure out, here are a few helpful links if you want to do this:
