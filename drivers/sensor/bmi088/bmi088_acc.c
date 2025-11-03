@@ -28,7 +28,7 @@ LOG_MODULE_REGISTER(BMI088_ACC, CONFIG_SENSOR_LOG_LEVEL);
 
 
 bool bmi088_acc_bus_ready_spi(const struct device *dev) {
-    return spi_is_ready(&to_config(dev)->bus);
+    return spi_is_ready_dt(&to_config(dev)->bus);
 }
 
 /**
@@ -346,7 +346,7 @@ static const struct sensor_driver_api bmi088_acc_api = {
 #define BMI088_ACC_DEVICE_INIT(inst) \
     static struct bmi088_acc_data bmi088_acc_data_##inst;               \
     static const struct bmi088_acc_cfg bmi088_acc_cfg_##inst = {           \
-        .bus = SPI_DT_SPEC_INST_GET(inst, SPI_WORD_SET(8), 0),          \
+        .bus = SPI_DT_SPEC_INST_GET(inst, SPI_WORD_SET(8)),          \
         .odr = DT_INST_PROP(inst, odr),  \
         .osr = DT_INST_PROP(inst, osr),  \
     };                                   \
