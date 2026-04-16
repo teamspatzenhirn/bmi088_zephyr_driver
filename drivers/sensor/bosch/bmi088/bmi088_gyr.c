@@ -23,10 +23,6 @@
 
 LOG_MODULE_REGISTER(BMI088_GYR, CONFIG_SENSOR_LOG_LEVEL);
 
-#if DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 0
-#error "BMI088 gyroscope driver enabled without any devices"
-#endif
-
 /**
  * Send/receive data to/from the BMI088
  *

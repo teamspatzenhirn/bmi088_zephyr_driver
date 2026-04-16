@@ -1,1 +1,1 @@
-rsource "drivers/sensor/bmi088/Kconfig"
+rsource "drivers/sensor/bosch/bmi088/Kconfig"

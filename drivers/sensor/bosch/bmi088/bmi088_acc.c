@@ -22,11 +22,6 @@
 
 LOG_MODULE_REGISTER(BMI088_ACC, CONFIG_SENSOR_LOG_LEVEL);
 
-#if DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 0
-#error "BMI088 accelerometer driver enabled without any devices"
-#endif
-
-
 bool bmi088_acc_bus_ready_spi(const struct device *dev) {
     return spi_is_ready_dt(&to_config(dev)->bus);
 }
