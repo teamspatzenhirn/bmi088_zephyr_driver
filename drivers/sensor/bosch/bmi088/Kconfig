@@ -7,6 +7,7 @@ menuconfig BMI088
 	default y
 	depends on DT_HAS_BOSCH_BMI088_ACC_ENABLED && DT_HAS_BOSCH_BMI088_GYR_ENABLED
 	select SPI
+    select SENSOR
 	help
 	  Enable Bosch BMI088 inertial measurement unit that provides acceleration
 	  and angular rate measurements.
