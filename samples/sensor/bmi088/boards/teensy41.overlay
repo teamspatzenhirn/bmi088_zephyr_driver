@@ -1,0 +1,52 @@
+&lpspi4 {
+    // driver: zephyr 4.3.0-rc1
+    // compatible = "nxp,lpspi";
+    // driver: zephyr 4.0.0
+    compatible = "nxp,imx-lpspi";
+
+    status = "okay";
+
+    transfer-delay = <50>; // ns
+
+    pinctrl-0 = <&pinmux_lpspi4>;
+    pinctrl-names = "default";
+    
+    cs-gpios = <&gpio2  0 GPIO_ACTIVE_LOW>, // BMI088 Gyro
+               <&gpio2 11 GPIO_ACTIVE_LOW>; // BMI088 Accel
+
+    // BMI088
+
+    my_gyro: bmi088_gyr@0 {
+        compatible = "bosch,bmi088-gyr";
+        reg = <0>;
+        spi-max-frequency = <10000000>;
+        // datasheet page 39
+        bandwidth = <0x06>; // corner-frequency at 64 Hz
+        status = "okay";
+    };
+
+    my_acc: bmi088_acc@1 {
+        compatible = "bosch,bmi088-acc";
+        reg = <1>;
+        spi-max-frequency = <10000000>;
+        // datasheet page 16 and 29
+        // corner-frequency at 80 Hz
+        odr = <0x0B>; // 800 Hz
+        osr = <0x08>; // 4 times oversampled
+        status = "okay";
+    };
+};
+
+&zephyr_udc0 {
+    cdc_acm_uart0: cdc_acm_uart0 {
+		compatible = "zephyr,cdc-acm-uart";
+	};
+};
+
+/ {
+    chosen {
+	    zephyr,console = &cdc_acm_uart0;
+        // use hardware uart for early debug (if necessary):
+        // zephyr,console = &lpuart6;
+    };
+};
