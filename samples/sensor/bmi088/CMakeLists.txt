@@ -19,7 +19,7 @@ list(APPEND EXTRA_ZEPHYR_MODULES
 )
 
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
-project(as5x47_sample)
+project(bmi088_sample)
 
 FILE(GLOB app_sources src/*.cpp)
 target_sources(app PRIVATE ${app_sources})
